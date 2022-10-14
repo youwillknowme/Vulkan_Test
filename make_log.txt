@@ -1,0 +1,26 @@
+GNU Make 4.2.1
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Reading makefiles...
+Updating makefiles....
+Updating goal targets....
+ File 'makeComplete' does not exist.
+   File 'compile' does not exist.
+     File 'clean' does not exist.
+    Must remake target 'clean'.
+rm -f Vulkan_Test
+    Successfully remade target file 'clean'.
+     File 'shaders' does not exist.
+    Must remake target 'shaders'.
+clean shader
+compile shader
+    Successfully remade target file 'shaders'.
+  Must remake target 'compile'.
+g++ -std=c++17 -O2 -g -o Vulkan_Test main.cpp -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
+  Successfully remade target file 'compile'.
+Must remake target 'makeComplete'.
+making complete!!!
+Successfully remade target file 'makeComplete'.
