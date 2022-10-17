@@ -502,8 +502,8 @@ private:
 	}
     }
     void createGraphicsPipeline() {
-        auto vertShaderCode = readFile("/home/xdx/vulkan/1.2.162.1/Vulkan_test/src/shader/vert.spv");
-        auto fragShaderCode = readFile("/home/xdx/vulkan/1.2.162.1/Vulkan_test/src/shader/frag.spv");
+        auto vertShaderCode = readFile("/home/xdx/vulkan/1.2.162.1/Vulkan_Test/src/shader/vert.spv");
+        auto fragShaderCode = readFile("/home/xdx/vulkan/1.2.162.1/Vulkan_Test/src/shader/frag.spv");
 
 
         VkShaderModule vertShaderModule = createShaderModule(vertShaderCode);
