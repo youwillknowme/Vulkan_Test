@@ -10,10 +10,10 @@ SHADER_DIRS :=$(SRC_DIRS)/shader
 
 SRC := $(shell find $(SRC_DIRS) -name '*.cpp')
 
-makeComplete: compile
+makeComplete: todocompile
 	@echo "making complete!!!"
 
-compile: clean shaders
+todocompile: clean shaders
 	mkdir -p $(BUILD_DIR)
 	$(CXX) $(CFLAGS) -g -o $(BUILD_DIR)/$(TARGET_EXEC) $(SRC) $(LDFLAGS)
 	
