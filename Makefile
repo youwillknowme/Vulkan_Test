@@ -1,30 +1,21 @@
-TARGET_EXEC := Vulkan_Test
+CFLAGS = -std=c++17 -O2 -g -W -Wall -I$(STB_INCLUDE_PATH) -I$(TINYOBJ_INCLUDE_PATH)
+LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
+BUILD_DIR = ./build
+SRC_DIR = ./src
+STB_INCLUDE_PATH = /usr/include/stb
+TINYOBJ_INCLUDE_PATH = /usr/include/tinyloader
+SRC = $(shell find $(SRC_DIR) -name *.cpp)
+SHADER_DIR = ./shaders
+SHADER_OBJ = frag.spv vert.spv
 
-SHELL := /bin/bash
-CFLAGS := -std=c++17 -O2
-LDFLAGS := -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
-
-BUILD_DIR := ./build
-SRC_DIRS := ./src
-SHADER_DIRS :=$(SRC_DIRS)/shader
-
-SRC := $(shell find $(SRC_DIRS) -name '*.cpp')
-
-makeComplete: todocompile
-	@echo "making complete!!!"
-
-todocompile: clean shaders
+VulkanTest:clean $(SHADER_OBJ)
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CFLAGS) -g -o $(BUILD_DIR)/$(TARGET_EXEC) $(SRC) $(LDFLAGS)
-	
-run: $(BUILD_DIR)/$(TARGET_EXEC)
-	$(BUILD_DIR)/$(TARGET_EXEC)
-shaders:
-	@source $(SHADER_DIRS)/clean.sh
-	@echo "clean shader"
-	@source $(SHADER_DIRS)/compile.sh
-	@echo "compile shader"
+	@g++ $(CFLAGS) -o $(BUILD_DIR)/VulkanTest $(SRC) $(LDFLAGS)
+.PHONY: run clean
 
-.PHONY: clean
+run: $(SHADER_DIR) 
+	$(BUILD_DIR)/VulkanTest
+%.spv:
+	@glslc $(SHADER_DIR)/shader.$(subst .spv, ,$@) -o $@
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf $(BUILD_DIR) *.spv
