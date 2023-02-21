@@ -2,8 +2,8 @@ CFLAGS = -std=c++17 -O2 -g -W -Wall -I$(STB_INCLUDE_PATH) -I$(TINYOBJ_INCLUDE_PA
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 BUILD_DIR = ./build
 SRC_DIR = ./src
-STB_INCLUDE_PATH = /usr/include/stb
-TINYOBJ_INCLUDE_PATH = /usr/include/tinyloader
+STB_INCLUDE_PATH = ./include/stb
+TINYOBJ_INCLUDE_PATH = ./include/tinyobjloader
 SRC = $(shell find $(SRC_DIR) -name *.cpp)
 SHADER_DIR = ./shaders
 SHADER_OBJ = frag.spv vert.spv
